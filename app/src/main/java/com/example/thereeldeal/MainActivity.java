@@ -18,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //main activity xml
+
         EditText searchBox = findViewById(R.id.editText);
         Button searchButton = findViewById(R.id.searchButton);
+        Button searchAgain = findViewById(R.id.searchAgain);
         TextView errorMessage = findViewById(R.id.errorMessage);
-        Button searchDifferentButton = findViewById(R.id.searchDifferent);
         Button searchAgainButton = findViewById(R.id.searchAgain);
         errorMessage.setVisibility(View.GONE);
         searchButton.setOnClickListener(unused -> {
@@ -31,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 populateSearchResults(searchBox.getText().toString().trim().toLowerCase());
                 setContentView(R.layout.search_results);
+                Button searchDifferent = findViewById(R.id.searchDifferent);
+                searchDifferent.setOnClickListener(notclicked -> {
+                    startActivity(new Intent(this, MainActivity.class));
+                });
             }
         });
-        searchDifferentButton.setOnClickListener(unused ->{
-            searchDifferentButton.setVisibility(View.GONE);
-        });
+
+
     }
     //helper methods
     public void populateSearchResults(String movieName) {
@@ -46,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 underscoreName = individualWords[i] + "_";
             }
         }
-
 
     }
 }
