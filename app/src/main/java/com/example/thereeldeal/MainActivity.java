@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 test.setText("Oh no");
-
                             }
                         });
                 queue.add(request);
