@@ -90,16 +90,10 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             JSONArray movieArray = response.getJSONArray("Search");
                             for (int i = 0; i < 1; i++) {
-                                setContentView(R.layout.chunk_search_result);
-                                View infoChunk = getLayoutInflater().inflate(R.layout.chunk_search_result, searchResults, false);
-                                TextView movieTitle = findViewById(R.id.movieSearchTitle);
-                                ImageView movieImage = findViewById(R.id.movieSearchImage);
-                                Button moreInfo = findViewById(R.id.moreInfo);
-                                movieTitle.setText(movieArray.getJSONObject(i).get("Title").toString());
+                                //ImageView movieImage = findViewById(R.id.movieSearchImage);
+                                //Button moreInfo = findViewById(R.id.moreInfo);
                                 String imageURL = movieArray.getJSONObject(i).get("Poster").toString();
-                                Picasso.get().load(imageURL).into(movieImage);
-                                searchResults.addView(infoChunk);
-                                //setContentView(R.layout.search_results);
+                                //Picasso.get().load(imageURL).into(movieImage);
                             }
                         } catch (JSONException e) {
                             System.out.println(e.toString());
