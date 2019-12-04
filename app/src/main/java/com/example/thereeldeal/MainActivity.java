@@ -33,44 +33,55 @@ public class MainActivity extends AppCompatActivity {
         Button searchButton = findViewById(R.id.searchButton);
         Button searchAgain = findViewById(R.id.searchAgain);
         TextView errorMessage = findViewById(R.id.errorMessage);
-        Button searchAgainButton = findViewById(R.id.searchAgain);
         errorMessage.setVisibility(View.GONE);
         searchButton.setOnClickListener(unused -> {
             if (searchBox.getText().toString().trim().length() == 0) {
                 errorMessage.setVisibility(View.VISIBLE);
             } else {
                 populateSearchResults(searchBox.getText().toString().trim().toLowerCase());
-                setContentView(R.layout.search_results);
-                TextView test = findViewById(R.id.test);
-                String url = "http://www.omdbapi.com/?i=tt0848228&apikey=f5c82c9f";
-                JsonObjectRequest request = new JsonObjectRequest
-                        (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                test.setText("Response: " + response.toString());
-                            }
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                test.setText("Oh no");
-                            }
-                        });
-                queue.add(request);
 
             }
         });
     }
     //helper methods
     public void populateSearchResults(String movieName) {
-        String underscoreName;
+        String underscoreName = "";
         String[] individualWords = movieName.split(" ");
         for (int i = 0; i < individualWords.length; i++) {
+            if (individualWords.length == 1) {
+                underscoreName = movieName;
+            }
             if (i != individualWords.length - 1) {
                 underscoreName = individualWords[i] + "_";
             }
         }
-        //TextView test = findViewById(R.id.test);
+        setContentView(R.layout.search_results);
+        Button searchDifferent = findViewById(R.id.searchDifferent);
+        searchDifferent.setOnClickListener(notclicked -> {
+            startActivity(new Intent(this, MainActivity.class));
+        });
+        TextView test = findViewById(R.id.test);
+        String urlFirst = "https://www.omdbapi.com/?s=";
+        String urlSecond = "&apikey=f5c82c9f";
 
+        JsonObjectRequest request = new JsonObjectRequest
+                (Request.Method.GET, urlFirst + underscoreName + urlSecond, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if (response.toString().equals("{\"Response\":\"False\",\"Error\":\"Movie not found!\"}")) {
+                            setContentView(R.layout.activity_main);
+                            TextView errorMessage = findViewById(R.id.errorMessage);
+                            errorMessage.setVisibility(View.VISIBLE);
+                        }
+                        test.setText("Response: " + response.toString());
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        test.setText("Something went wrong. Please check your connection.");
+                    }
+                });
+        queue.add(request);
 
     }
 }
