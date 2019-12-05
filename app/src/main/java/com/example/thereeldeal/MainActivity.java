@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             String imageURL = response.get("Poster").toString();
                             Picasso.get().load(imageURL).into(poster);
-                            title.setText("Title: " + response.get("Title").toString());
+                            title.setText(response.get("Title").toString());
                             rating.setText("Rated: " + response.get("Rated").toString());
                             runtime.setText("Runtime: " + response.get("Runtime").toString());
                             releaseDate.setText("Release Date: " + response.get("Released").toString());

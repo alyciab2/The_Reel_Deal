@@ -4,12 +4,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/searchAgain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Search for another Movie" />
-
     <ScrollView
         android:id="@+id/movieInfoScroll"
         android:layout_width="match_parent"
@@ -118,5 +112,11 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/searchAgain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search for another Movie" />
 
 </LinearLayout>
