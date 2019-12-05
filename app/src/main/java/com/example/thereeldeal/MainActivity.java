@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 errorMessage.setVisibility(View.VISIBLE);
             } else {
                 populateSearchResults(searchBox.getText().toString().trim().toLowerCase());
-
             }
         });
     }
@@ -134,24 +133,6 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             System.out.println(e.toString());
                         }
-                        //JsonElement JsonResult = new JsonParser().parse(response.toString());
-                        //test.setText(JsonResult.getAsJsonObject().get("Search").getAsString());
-                        /*
-                        JsonArray movieArray = JsonResult.get("Search").getAsJsonArray();
-                        for (JsonElement movieInfo : movieArray) {
-                            test.setVisibility(View.GONE);
-                            setContentView(R.layout.chunk_search_result);
-                            View infoChunk = getLayoutInflater().inflate(R.layout.chunk_search_result, searchResults, false);
-                            TextView movieTitle = findViewById(R.id.movieSearchTitle);
-                            ImageView movieImage = findViewById(R.id.movieSearchImage);
-                            Button moreInfo = findViewById(R.id.moreInfo);
-                            JsonObject movie = movieInfo.getAsJsonObject();
-                            test.setText(movie.get("Title").getAsString());
-                            searchResults.addView(infoChunk);
-                            setContentView(R.layout.search_results);
-                        } */
-
-
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -160,6 +141,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         queue.add(request);
-
+        poster0.setOnClickListener(unused -> {
+            moviePageResults(poster0.getTag().toString());
+        });
+    }
+    public void moviePageResults(String imdbID) {
+        setContentView(R.layout.movie_information);
+        Button searchAgain = findViewById(R.id.searchAgain);
+        searchAgain.setOnClickListener(unused -> {
+            startActivity(new Intent(this, MainActivity.class));
+        });
     }
 }
