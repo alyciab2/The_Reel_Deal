@@ -144,6 +144,30 @@ public class MainActivity extends AppCompatActivity {
         poster0.setOnClickListener(unused -> {
             moviePageResults(poster0.getTag().toString());
         });
+        poster1.setOnClickListener(unused -> {
+            moviePageResults(poster1.getTag().toString());
+        });
+        poster2.setOnClickListener(unused -> {
+            moviePageResults(poster2.getTag().toString());
+        });
+        poster3.setOnClickListener(unused -> {
+            moviePageResults(poster3.getTag().toString());
+        });
+        poster4.setOnClickListener(unused -> {
+            moviePageResults(poster4.getTag().toString());
+        });
+        poster5.setOnClickListener(unused -> {
+            moviePageResults(poster5.getTag().toString());
+        });
+        poster6.setOnClickListener(unused -> {
+            moviePageResults(poster6.getTag().toString());
+        });
+        poster7.setOnClickListener(unused -> {
+            moviePageResults(poster7.getTag().toString());
+        });
+        poster8.setOnClickListener(unused -> {
+            moviePageResults(poster8.getTag().toString());
+        });
     }
     public void moviePageResults(String imdbID) {
         setContentView(R.layout.movie_information);
@@ -151,5 +175,44 @@ public class MainActivity extends AppCompatActivity {
         searchAgain.setOnClickListener(unused -> {
             startActivity(new Intent(this, MainActivity.class));
         });
+        String urlFirst = "https://www.omdbapi.com/?i=";
+        String urlSecond = "&apikey=f5c82c9f";
+        ImageView poster = findViewById(R.id.forPoster);
+        TextView title = findViewById(R.id.forTitle);
+        TextView rating = findViewById(R.id.forRating);
+        TextView runtime = findViewById(R.id.forRuntime);
+        TextView releaseDate = findViewById(R.id.forReleaseDate);
+        TextView genre = findViewById(R.id.forGenre);
+        TextView director = findViewById(R.id.forDirector);
+        TextView writer = findViewById(R.id.forWriter);
+        TextView actors = findViewById(R.id.forActors);
+        TextView plot = findViewById(R.id.forPlot);
+        JsonObjectRequest request = new JsonObjectRequest
+                (Request.Method.GET, urlFirst + imdbID + urlSecond, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            String imageURL = response.get("Poster").toString();
+                            Picasso.get().load(imageURL).into(poster);
+                            title.setText("Title: " + response.get("Title").toString());
+                            rating.setText("Rated: " + response.get("Rated").toString());
+                            runtime.setText("Runtime: " + response.get("Runtime").toString());
+                            releaseDate.setText("Release Date: " + response.get("Released").toString());
+                            genre.setText("Genre: " + response.get("Genre").toString());
+                            director.setText("Director: " + response.get("Director").toString());
+                            writer.setText("Writer: " + response.get("Writer").toString());
+                            actors.setText("Actors: " + response.get("Actors").toString());
+                            plot.setText("Plot: " + response.get("Plot").toString());
+                        } catch (JSONException e) {
+                            System.out.println(e.toString());
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //test.setText("Something went wrong. Please check your connection.");
+                    }
+                });
+        queue.add(request);
     }
 }
