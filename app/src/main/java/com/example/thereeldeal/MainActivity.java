@@ -187,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
         TextView writer = findViewById(R.id.forWriter);
         TextView actors = findViewById(R.id.forActors);
         TextView plot = findViewById(R.id.forPlot);
+        TextView rTRating = findViewById(R.id.forRTRating);
         JsonObjectRequest request = new JsonObjectRequest
                 (Request.Method.GET, urlFirst + imdbID + urlSecond, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -203,6 +204,8 @@ public class MainActivity extends AppCompatActivity {
                             writer.setText("Writer: " + response.get("Writer").toString());
                             actors.setText("Actors: " + response.get("Actors").toString());
                             plot.setText("Plot: " + response.get("Plot").toString());
+                            JSONArray rating = response.getJSONArray("Ratings");
+                            rTRating.setText("Rotten Tomatoes Rating: " + rating.getJSONObject(1).get("Value"));
                         } catch (JSONException e) {
                             System.out.println(e.toString());
                         }
