@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -70,6 +71,16 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.search_results);
         LinearLayout searchResults = findViewById(R.id.searchScrollLayout);
+        ImageButton poster0 = findViewById(R.id.poster0);
+        ImageButton poster1 = findViewById(R.id.poster1);
+        ImageButton poster2 = findViewById(R.id.poster2);
+        ImageButton poster3 = findViewById(R.id.poster3);
+        ImageButton poster4 = findViewById(R.id.poster4);
+        ImageButton poster5 = findViewById(R.id.poster5);
+        ImageButton poster6 = findViewById(R.id.poster6);
+        ImageButton poster7 = findViewById(R.id.poster7);
+        ImageButton poster8 = findViewById(R.id.poster8);
+
         Button searchDifferent = findViewById(R.id.searchDifferent);
         searchDifferent.setOnClickListener(notclicked -> {
             startActivity(new Intent(this, MainActivity.class));
@@ -89,11 +100,36 @@ public class MainActivity extends AppCompatActivity {
                         }
                         try {
                             JSONArray movieArray = response.getJSONArray("Search");
-                            for (int i = 0; i < 1; i++) {
-                                //ImageView movieImage = findViewById(R.id.movieSearchImage);
-                                //Button moreInfo = findViewById(R.id.moreInfo);
+                            for (int i = 0; i < movieArray.length(); i++) {
                                 String imageURL = movieArray.getJSONObject(i).get("Poster").toString();
-                                //Picasso.get().load(imageURL).into(movieImage);
+                                if (i == 0) {
+                                    Picasso.get().load(imageURL).into(poster0);
+                                    poster0.setTag(movieArray.getJSONObject(i).get("imdbID").toString());
+                                } else if (i == 1) {
+                                    Picasso.get().load(imageURL).into(poster1);
+                                    poster1.setTag(movieArray.getJSONObject(i).get("imdbID").toString());
+                                } else if (i == 2) {
+                                    Picasso.get().load(imageURL).into(poster2);
+                                    poster2.setTag(movieArray.getJSONObject(i).get("imdbID").toString());
+                                } else if (i == 3) {
+                                    Picasso.get().load(imageURL).into(poster3);
+                                    poster3.setTag(movieArray.getJSONObject(i).get("imdbID").toString());
+                                } else if (i == 4) {
+                                    Picasso.get().load(imageURL).into(poster4);
+                                    poster4.setTag(movieArray.getJSONObject(i).get("imdbID").toString());
+                                } else if (i == 5) {
+                                    Picasso.get().load(imageURL).into(poster5);
+                                    poster5.setTag(movieArray.getJSONObject(i).get("imdbID").toString());
+                                } else if (i == 6) {
+                                    Picasso.get().load(imageURL).into(poster6);
+                                    poster6.setTag(movieArray.getJSONObject(i).get("imdbID").toString());
+                                } else if (i == 7) {
+                                    Picasso.get().load(imageURL).into(poster7);
+                                    poster7.setTag(movieArray.getJSONObject(i).get("imdbID").toString());
+                                } else if (i == 8) {
+                                    Picasso.get().load(imageURL).into(poster8);
+                                    poster8.setTag(movieArray.getJSONObject(i).get("imdbID").toString());
+                                }
                             }
                         } catch (JSONException e) {
                             System.out.println(e.toString());
