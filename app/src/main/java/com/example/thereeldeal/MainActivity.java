@@ -198,10 +198,10 @@ public class MainActivity extends AppCompatActivity {
                             title.setText(response.get("Title").toString());
                             rating.setText("Rated: " + response.get("Rated").toString());
                             runtime.setText("Runtime: " + response.get("Runtime").toString());
-                            releaseDate.setText("Release Date: " + response.get("Released").toString());
+                            releaseDate.setText("Released: " + response.get("Released").toString());
                             genre.setText("Genre: " + response.get("Genre").toString());
-                            director.setText("Director: " + response.get("Director").toString());
-                            writer.setText("Writer: " + response.get("Writer").toString());
+                            director.setText("Director(s): " + response.get("Director").toString());
+                            writer.setText("Writer(s): " + response.get("Writer").toString());
                             actors.setText("Actors: " + response.get("Actors").toString());
                             plot.setText("Plot: " + response.get("Plot").toString());
                             JSONArray rating = response.getJSONArray("Ratings");

@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#920000"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ScrollView
         android:id="@+id/movieInfoScroll"
         android:layout_width="match_parent"
-        android:layout_height="680dp">
+        android:layout_height="659dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,6 +47,7 @@
                             android:layout_width="246dp"
                             android:layout_height="wrap_content"
                             android:text="TextView"
+                            android:textColor="#FFE9E9E9"
                             android:textSize="30dp" />
 
                         <TextView
@@ -47,28 +55,32 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView"
-                            android:textSize="25dp" />
+                            android:textColor="#FFE9E9E9"
+                            android:textSize="23dp" />
 
                         <TextView
                             android:id="@+id/forRuntime"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView"
-                            android:textSize="25dp" />
+                            android:textColor="#FFE9E9E9"
+                            android:textSize="23dp" />
 
                         <TextView
                             android:id="@+id/forReleaseDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView"
-                            android:textSize="25dp" />
+                            android:textColor="#FFE9E9E9"
+                            android:textSize="23dp" />
 
                         <TextView
                             android:id="@+id/forGenre"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="TextView"
-                            android:textSize="25dp" />
+                            android:textColor="#FFE9E9E9"
+                            android:textSize="23dp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -80,34 +92,60 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textColor="#FFE9E9E9"
                 android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" " />
 
             <TextView
                 android:id="@+id/forDirector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textColor="#FFE9E9E9"
                 android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/forWriter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textColor="#FFE9E9E9"
                 android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/forActors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textColor="#FFE9E9E9"
                 android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/forRTRating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textColor="#FFE9E9E9"
                 android:textSize="25dp" />
 
         </LinearLayout>
